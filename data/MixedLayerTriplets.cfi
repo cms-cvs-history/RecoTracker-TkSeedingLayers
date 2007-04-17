@@ -1,0 +1,38 @@
+PSet LayerPSet = {
+  vstring layerList = { "BPix1+BPix2+BPix3",
+                        "BPix1+BPix2+FPix1_pos",
+                        "BPix1+BPix2+FPix1_neg",
+                        "BPix1+FPix1_pos+FPix2_pos",
+                        "BPix1+FPix1_neg+FPix2_neg",
+                        "BPix1+BPix2+TIB1",
+                        "BPix1+BPix3+TIB1",
+                        "BPix2+BPix3+TIB1"
+  }
+  PSet BPix = {
+    string HitProducer = "siPixelRecHits"
+    string TTRHBuilder = "TTRHBuilder4GlobalPixelSeeds"
+    untracked bool useErrorsFromParam = true
+    double hitErrorRPhi = 0.0027
+    double hitErrorRZ   = 0.0060
+  }
+
+  PSet FPix = {
+    string HitProducer = "siPixelRecHits"
+    string TTRHBuilder = "TTRHBuilder4GlobalPixelSeeds"
+    untracked bool useErrorsFromParam = true
+    double hitErrorRPhi = 0.0051
+    double hitErrorRZ   = 0.0036
+  }
+
+  PSet TIB = {
+    InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
+    string TTRHBuilder        =  "WithTrackAngle"
+  }
+
+  PSet TID = {
+    InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
+    string TTRHBuilder        =  "WithTrackAngle"
+  }
+
+}
+
