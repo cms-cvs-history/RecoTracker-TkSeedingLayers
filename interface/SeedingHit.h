@@ -1,6 +1,7 @@
 #ifndef TkSeedingLayers_SeedingHit_H
 #define TkSeedingLayers_SeedingHit_H
 
+#include <boost/shared_ptr.hpp>
 
 namespace edm { class EventSetup; }
 class TrackingRecHit;
@@ -11,18 +12,19 @@ class SeedingHit {
 public:
   SeedingHit(const TrackingRecHit * hit ,  const edm::EventSetup& iSetup);
 
-  float phi() const {return thePhi;}
-  float rOrZ() const { return theRZ; } 
-  float r() const {return theR; }
-  float z() const {return theZ; }
+  float phi() const;
+  float rOrZ() const;
+  float r() const;
+  float z() const;
 
-  const TrackingRecHit * RecHit() const { return theRecHit;}
+  // to be skipped
+  const TrackingRecHit * RecHit() const;
+
+  operator const TrackingRecHit* () const;
 
 private:
-  const TrackingRecHit *theRecHit;
-  float thePhi;
-  float theR, theZ;
-  float theRZ;
+  class SeedingHitImpl;
+  boost::shared_ptr<SeedingHitImpl> theImpl;
 };
 
 }
