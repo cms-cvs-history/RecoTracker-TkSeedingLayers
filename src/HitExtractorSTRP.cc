@@ -39,7 +39,7 @@ bool HitExtractorSTRP::ringRange(int ring) const
   else return false;
 }
 
-vector<SeedingHit> HitExtractorSTRP::hits(const edm::Event& ev, const edm::EventSetup& es) const
+vector<SeedingHit> HitExtractorSTRP::hits(const SeedingLayer & sl, const edm::Event& ev, const edm::EventSetup& es) const
 {
   TrackerLayerIdAccessor accessor;
   std::vector<SeedingHit> result;
@@ -54,7 +54,7 @@ vector<SeedingHit> HitExtractorSTRP::hits(const edm::Event& ev, const edm::Event
       const SiStripMatchedRecHit2DCollection::range range =
         matchedHits->get(accessor.stripTIBLayer(theIdLayer) );
       for(SiStripMatchedRecHit2DCollection::const_iterator it=range.first; it!=range.second; it++){
-        result.push_back( SeedingHit(&(*it), es) );
+        result.push_back( SeedingHit(&(*it), sl, es) );
       }
     }
     if (hasRPhiHits) {
@@ -76,7 +76,7 @@ vector<SeedingHit> HitExtractorSTRP::hits(const edm::Event& ev, const edm::Event
           matchedHits->get(accessor.stripTIDDisk(theSide,theIdLayer) );
       for(SiStripMatchedRecHit2DCollection::const_iterator it=range.first; it!=range.second; it++){
         int ring = TIDDetId( it->geographicalId() ).ring();
-        if (ringRange(ring))result.push_back( SeedingHit(&(*it), es) );
+        if (ringRange(ring))result.push_back( SeedingHit(&(*it), sl, es) );
       }
     }
     if (hasRPhiHits) {

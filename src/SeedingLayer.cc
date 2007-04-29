@@ -3,10 +3,17 @@
 
 using namespace ctfseeding;
 
-SeedingLayer::SeedingLayer( const DetLayer* layer, const std::string & name,
-    const std::string & hitBuilder, const HitExtractor * hitExtractor)
+SeedingLayer::SeedingLayer( 
+    const std::string & name, 
+    const DetLayer* layer, 
+    const TransientTrackingRecHitBuilder * hitBuilder,
+    const HitExtractor * hitExtractor,
+    bool usePredefinedErrors, float hitErrorRZ, float hitErrorRPhi)
 {
-  SeedingLayerImpl * l = new SeedingLayerImpl(layer,name,hitBuilder,hitExtractor);
+  SeedingLayerImpl * l = 
+      usePredefinedErrors ? 
+      new SeedingLayerImpl(name,layer,hitBuilder,hitExtractor,hitErrorRZ,hitErrorRPhi)
+    : new SeedingLayerImpl(name,layer,hitBuilder,hitExtractor);
   theImpl = boost::shared_ptr<SeedingLayerImpl> (l);
 }
 
@@ -20,14 +27,28 @@ const DetLayer*  SeedingLayer::detLayer() const
   return theImpl->detLayer();
 }
 
-const TransientTrackingRecHitBuilder * SeedingLayer::hitBuilder(const edm::EventSetup& es) const 
+const TransientTrackingRecHitBuilder * SeedingLayer::hitBuilder() const 
 {
-  return theImpl->hitBuilder(es);
+  return theImpl->hitBuilder();
 }
 
 std::vector<SeedingHit> SeedingLayer::hits(const edm::Event& ev, const edm::EventSetup& es) const
 {
-  return  theImpl->hits(ev,es);
+  return  theImpl->hits( *this,ev,es);
 }
 
 
+bool SeedingLayer::hasPredefinedHitErrors() const 
+{
+  return theImpl->hasPredefinedHitErrors();
+}
+
+float SeedingLayer::predefinedHitErrorRZ() const
+{
+  return theImpl->predefinedHitErrorRZ();
+}
+
+float SeedingLayer::predefinedHitErrorRPhi() const
+{
+  return theImpl->predefinedHitErrorRPhi();
+}
