@@ -5,7 +5,7 @@ PSet LayerPSet = {
                         "FPix1_pos+FPix2_pos", "FPix1_neg+FPix2_neg"}
   PSet BPix = {
     string HitProducer = "siPixelRecHits"  
-    string TTRHBuilder = "TTRHBuilder4GlobalPixelSeeds" 
+    string TTRHBuilder = "PixelTTRHBuilderWithoutAngle" 
     untracked bool useErrorsFromParam = true
     double hitErrorRPhi = 0.0027  
     double hitErrorRZ   = 0.0060 
@@ -13,7 +13,7 @@ PSet LayerPSet = {
 
   PSet FPix = {
     string HitProducer = "siPixelRecHits"  
-    string TTRHBuilder = "TTRHBuilder4GlobalPixelSeeds" 
+    string TTRHBuilder = "PixelTTRHBuilderWithoutAngle" 
     untracked bool useErrorsFromParam = true
     double hitErrorRPhi = 0.0051 
     double hitErrorRZ   = 0.0036  
