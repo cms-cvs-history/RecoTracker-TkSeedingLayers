@@ -1,11 +1,20 @@
-PSet LayerPSet = {
+es_module myTTRHBuilderWithoutAngle4PixelPairs 
+    = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+replace myTTRHBuilderWithoutAngle4PixelPairs.StripCPE = "Fake"
+replace myTTRHBuilderWithoutAngle4PixelPairs.ComponentName = "TTRHBuilderWithoutAngle4PixelPairs"
+
+es_module =  PixelLayerPairsESProducer {
+
+  string ComponentName = "PixelLayerPairs"
+
   vstring layerList = { "BPix1+BPix2", "BPix1+BPix3", "BPix2+BPix3",
                         "BPix1+FPix1_pos", "BPix1+FPix1_neg", "BPix1+FPix2_pos", "BPix1+FPix2_neg",
                         "BPix2+FPix1_pos", "BPix2+FPix1_neg", "BPix2+FPix2_pos", "BPix2+FPix2_neg",
                         "FPix1_pos+FPix2_pos", "FPix1_neg+FPix2_neg"}
+
   PSet BPix = {
     string HitProducer = "siPixelRecHits"  
-    string TTRHBuilder = "PixelTTRHBuilderWithoutAngle" 
+    string TTRHBuilder = "TTRHBuilderWithoutAngle4PixelPairs" 
     untracked bool useErrorsFromParam = true
     double hitErrorRPhi = 0.0027  
     double hitErrorRZ   = 0.0060 
@@ -13,7 +22,7 @@ PSet LayerPSet = {
 
   PSet FPix = {
     string HitProducer = "siPixelRecHits"  
-    string TTRHBuilder = "PixelTTRHBuilderWithoutAngle" 
+    string TTRHBuilder = "TTRHBuilderWithoutAngle4PixelPairs" 
     untracked bool useErrorsFromParam = true
     double hitErrorRPhi = 0.0051 
     double hitErrorRZ   = 0.0036  

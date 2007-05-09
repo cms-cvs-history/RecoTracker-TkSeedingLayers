@@ -1,4 +1,12 @@
-PSet LayerPSet = {
+es_module myTTRHBuilderWithoutAngle4MixedTriplets
+    = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+replace myTTRHBuilderWithoutAngle4MixedTriplets.StripCPE = "Fake"
+replace myTTRHBuilderWithoutAngle4MixedTriplets.ComponentName = "TTRHBuilderWithoutAngle4MixedTriplets"
+
+es_module = MixedLayerTripletsESProducer {
+
+  string ComponentName = "MixedLayerTriplets"
+
   vstring layerList = { "BPix1+BPix2+BPix3",
                         "BPix1+BPix2+FPix1_pos",
                         "BPix1+BPix2+FPix1_neg",
@@ -10,7 +18,7 @@ PSet LayerPSet = {
   }
   PSet BPix = {
     string HitProducer = "siPixelRecHits"
-    string TTRHBuilder = "PixelTTRHBuilderWithoutAngle"
+    string TTRHBuilder = "TTRHBuilderWithoutAngle4MixedTriplets"
     untracked bool useErrorsFromParam = true
     double hitErrorRPhi = 0.0027
     double hitErrorRZ   = 0.0060
@@ -18,7 +26,7 @@ PSet LayerPSet = {
 
   PSet FPix = {
     string HitProducer = "siPixelRecHits"
-    string TTRHBuilder = "PixelTTRHBuilderWithoutAngle"
+    string TTRHBuilder = "TTRHBuilderWithoutAngle4MixedTriplets"
     untracked bool useErrorsFromParam = true
     double hitErrorRPhi = 0.0051
     double hitErrorRZ   = 0.0036
