@@ -10,7 +10,10 @@ es_module =  MixedLayerPairsESProducer {
   vstring layerList = { "BPix1+BPix2", "BPix1+BPix3", "BPix2+BPix3",
                         "BPix1+FPix1_pos", "BPix1+FPix1_neg", "BPix1+FPix2_pos", "BPix1+FPix2_neg",
                         "BPix2+FPix1_pos", "BPix2+FPix1_neg", "BPix2+FPix2_pos", "BPix2+FPix2_neg",
-                        "FPix1_pos+FPix2_pos", "FPix1_neg+FPix2_neg"}
+                        "FPix1_pos+FPix2_pos", "FPix1_neg+FPix2_neg",
+                        "FPix2_pos+TEC1_pos","FPix2_pos+TEC2_pos","TEC2_pos+TEC3_pos",
+                        "FPix2_neg+TEC1_neg","FPix2_neg+TEC2_neg","TEC2_neg+TEC3_neg"
+                        }
 
   PSet BPix = {
     string HitProducer = "siPixelRecHits"  
@@ -28,18 +31,14 @@ es_module =  MixedLayerPairsESProducer {
     double hitErrorRZ   = 0.0036  
   }
 
-  PSet TIB = {
+  PSet TEC = {
     InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
-//        InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
-//        InputTag stereoRecHits  = siStripMatchedRecHits:stereoRecHit
+    InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
+    InputTag stereoRecHits  = siStripMatchedRecHits:stereoRecHit
     string TTRHBuilder        =  "WithTrackAngle"
-  }
-
-  PSet TID = {
-    InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
-//        InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
-//        InputTag stereoRecHits  = siStripMatchedRecHits:stereoRecHit
-    string TTRHBuilder        =  "WithTrackAngle"
+    untracked bool useRingSlector = true
+    int32 minRing = 1
+    int32 maxRing = 2
   }
 
 }
