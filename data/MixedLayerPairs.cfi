@@ -1,0 +1,45 @@
+es_module myTTRHBuilderWithoutAngle4MixedPairs 
+    = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+replace myTTRHBuilderWithoutAngle4MixedPairs.StripCPE = "Fake"
+replace myTTRHBuilderWithoutAngle4MixedPairs.ComponentName = "TTRHBuilderWithoutAngle4MixedPairs"
+
+es_module =  MixedLayerPairsESProducer {
+
+  string ComponentName = "MixedLayerPairs"
+
+  vstring layerList = { "BPix1+BPix2", "BPix1+BPix3", "BPix2+BPix3",
+                        "BPix1+FPix1_pos", "BPix1+FPix1_neg", "BPix1+FPix2_pos", "BPix1+FPix2_neg",
+                        "BPix2+FPix1_pos", "BPix2+FPix1_neg", "BPix2+FPix2_pos", "BPix2+FPix2_neg",
+                        "FPix1_pos+FPix2_pos", "FPix1_neg+FPix2_neg"}
+
+  PSet BPix = {
+    string HitProducer = "siPixelRecHits"  
+    string TTRHBuilder = "TTRHBuilderWithoutAngle4MixedPairs" 
+    untracked bool useErrorsFromParam = true
+    double hitErrorRPhi = 0.0027  
+    double hitErrorRZ   = 0.0060 
+  }
+
+  PSet FPix = {
+    string HitProducer = "siPixelRecHits"  
+    string TTRHBuilder = "TTRHBuilderWithoutAngle4MixedPairs" 
+    untracked bool useErrorsFromParam = true
+    double hitErrorRPhi = 0.0051 
+    double hitErrorRZ   = 0.0036  
+  }
+
+  PSet TIB = {
+    InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
+//        InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
+//        InputTag stereoRecHits  = siStripMatchedRecHits:stereoRecHit
+    string TTRHBuilder        =  "WithTrackAngle"
+  }
+
+  PSet TID = {
+    InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
+//        InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
+//        InputTag stereoRecHits  = siStripMatchedRecHits:stereoRecHit
+    string TTRHBuilder        =  "WithTrackAngle"
+  }
+
+}
