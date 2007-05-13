@@ -33,8 +33,6 @@ es_module =  MixedLayerPairsESProducer {
 
   PSet TEC = {
     InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
-    InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
-    InputTag stereoRecHits  = siStripMatchedRecHits:stereoRecHit
     string TTRHBuilder        =  "WithTrackAngle"
     untracked bool useRingSlector = true
     int32 minRing = 1
