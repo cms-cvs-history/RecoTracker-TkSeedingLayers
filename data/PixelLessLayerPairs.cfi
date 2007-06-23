@@ -1,0 +1,25 @@
+es_module pixellesslayerpairs = PixelLessLayerPairsESProducer {
+
+  string ComponentName = "PixelLessLayerPairs"
+
+  vstring layerList = {"TIB1+TID1", "TIB1+TEC1", "TEC1+TEC2"}
+
+  PSet TIB = {
+    InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
+    string TTRHBuilder        =  "WithTrackAngle"
+  }
+
+  PSet TID = {
+    InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
+    string TTRHBuilder        =  "WithTrackAngle"
+  }
+
+  PSet TEC = {
+    InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
+    string TTRHBuilder        =  "WithTrackAngle"
+    untracked bool useRingSlector = true
+    int32 minRing = 1
+    int32 maxRing = 2
+  }
+
+}
