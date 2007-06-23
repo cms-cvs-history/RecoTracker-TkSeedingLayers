@@ -3,7 +3,7 @@ es_module myTTRHBuilderWithoutAngle4PixelPairs
 replace myTTRHBuilderWithoutAngle4PixelPairs.StripCPE = "Fake"
 replace myTTRHBuilderWithoutAngle4PixelPairs.ComponentName = "TTRHBuilderWithoutAngle4PixelPairs"
 
-es_module =  PixelLayerPairsESProducer {
+es_module pixellayerpairs =  PixelLayerPairsESProducer {
 
   string ComponentName = "PixelLayerPairs"
 

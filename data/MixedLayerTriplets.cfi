@@ -3,7 +3,7 @@ es_module myTTRHBuilderWithoutAngle4MixedTriplets
 replace myTTRHBuilderWithoutAngle4MixedTriplets.StripCPE = "Fake"
 replace myTTRHBuilderWithoutAngle4MixedTriplets.ComponentName = "TTRHBuilderWithoutAngle4MixedTriplets"
 
-es_module = MixedLayerTripletsESProducer {
+es_module mixedlayertriplets = MixedLayerTripletsESProducer {
 
   string ComponentName = "MixedLayerTriplets"
 
