@@ -2,7 +2,15 @@ es_module pixellesslayerpairs = PixelLessLayerPairsESProducer {
 
   string ComponentName = "PixelLessLayerPairs"
 
-  vstring layerList = {"TIB1+TID1", "TIB1+TEC1", "TEC1+TEC2"}
+  vstring layerList = {"TIB1+TIB2", 
+		       "TIB1+TID1_pos", "TIB1+TID2_pos","TIB1+TID1_neg", "TIB1+TID2_neg",
+		       "TID1_pos+TID2_pos","TID2_pos+TID3_pos","TID3_pos+TEC2_pos","TEC2_pos+TEC3_pos",
+		       "TID1_neg+TID2_neg","TID2_neg+TID3_neg","TID3_neg+TEC2_neg","TEC2_neg+TEC3_neg"
+                      }
+
+  //WARNING: in the old implemenation, all the 3 rings of  TID were used.
+  // we need a different configuaration of rings for TID disks. Is it feasible 
+  // in the current framework?? 
 
   PSet TIB = {
     InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
