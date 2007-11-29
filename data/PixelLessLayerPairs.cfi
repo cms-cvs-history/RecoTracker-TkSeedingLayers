@@ -12,15 +12,51 @@ es_module pixellesslayerpairs = PixelLessLayerPairsESProducer {
   // we need a different configuaration of rings for TID disks. Is it feasible 
   // in the current framework?? 
 
-  PSet TIB = {
+  PSet TIB1 = {
     InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
+    InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
+#    InputTag stereoRecHits  = siStripMatchedRecHits:stereoRecHit
+    untracked bool useSimpleRphiHitsCleaner = false
     string TTRHBuilder        =  "WithTrackAngle"
   }
 
-  PSet TID = {
+  PSet TIB2 = {
     InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
+    InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
+    untracked bool useSimpleRphiHitsCleaner = false
     string TTRHBuilder        =  "WithTrackAngle"
   }
+
+  PSet TID1 = {
+    InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
+    InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
+    string TTRHBuilder        =  "WithTrackAngle"
+    untracked bool useSimpleRphiHitsCleaner = false
+    untracked bool useRingSlector = true
+    int32 minRing = 1
+    int32 maxRing = 2
+  }
+
+  PSet TID2 = {
+    InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
+    InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
+    string TTRHBuilder        =  "WithTrackAngle"
+    untracked bool useSimpleRphiHitsCleaner = false
+    untracked bool useRingSlector = true
+    int32 minRing = 1
+    int32 maxRing = 3
+  }
+
+  PSet TID3 = {
+    InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
+    InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
+    string TTRHBuilder        =  "WithTrackAngle"
+    untracked bool useSimpleRphiHitsCleaner = false
+    untracked bool useRingSlector = true
+    int32 minRing = 1
+    int32 maxRing = 2
+  }
+
 
   PSet TEC = {
     InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
