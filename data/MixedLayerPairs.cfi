@@ -11,8 +11,8 @@ es_module mixedlayerpairs =  MixedLayerPairsESProducer {
                         "BPix1+FPix1_pos", "BPix1+FPix1_neg", "BPix1+FPix2_pos", "BPix1+FPix2_neg",
                         "BPix2+FPix1_pos", "BPix2+FPix1_neg", "BPix2+FPix2_pos", "BPix2+FPix2_neg",
                         "FPix1_pos+FPix2_pos", "FPix1_neg+FPix2_neg",
-                        "FPix2_pos+TEC1_pos","FPix2_pos+TEC2_pos","TEC2_pos+TEC3_pos",
-                        "FPix2_neg+TEC1_neg","FPix2_neg+TEC2_neg","TEC2_neg+TEC3_neg"
+                        "FPix2_pos+TEC1_pos","FPix2_pos+TEC2_pos","TEC1_pos+TEC2_pos","TEC2_pos+TEC3_pos",
+                        "FPix2_neg+TEC1_neg","FPix2_neg+TEC2_neg","TEC1_neg+TEC2_neg","TEC2_pos+TEC3_pos"
                         }
 
   PSet BPix = {
@@ -36,7 +36,7 @@ es_module mixedlayerpairs =  MixedLayerPairsESProducer {
     string TTRHBuilder        =  "WithTrackAngle"
     untracked bool useRingSlector = true
     int32 minRing = 1
-    int32 maxRing = 2
+    int32 maxRing = 1
   }
 
 }
