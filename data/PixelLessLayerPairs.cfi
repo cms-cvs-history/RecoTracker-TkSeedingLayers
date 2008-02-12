@@ -12,15 +12,7 @@ es_module pixellesslayerpairs = PixelLessLayerPairsESProducer {
   // we need a different configuaration of rings for TID disks. Is it feasible 
   // in the current framework?? 
 
-  PSet TIB1 = {
-    InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
-    InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
-#    InputTag stereoRecHits  = siStripMatchedRecHits:stereoRecHit
-    untracked bool useSimpleRphiHitsCleaner = false
-    string TTRHBuilder        =  "WithTrackAngle"
-  }
-
-  PSet TIB2 = {
+  PSet TIB = {
     InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
     InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
     untracked bool useSimpleRphiHitsCleaner = false
