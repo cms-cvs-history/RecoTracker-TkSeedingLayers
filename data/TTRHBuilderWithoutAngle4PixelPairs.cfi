@@ -1,0 +1,5 @@
+es_module myTTRHBuilderWithoutAngle4PixelPairs
+    = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+replace myTTRHBuilderWithoutAngle4PixelPairs.StripCPE = "Fake"
+replace myTTRHBuilderWithoutAngle4PixelPairs.ComponentName = "TTRHBuilderWithoutAngle4PixelPairs"
+
