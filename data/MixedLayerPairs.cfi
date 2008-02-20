@@ -1,8 +1,3 @@
-es_module myTTRHBuilderWithoutAngle4MixedPairs 
-    = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
-replace myTTRHBuilderWithoutAngle4MixedPairs.StripCPE = "Fake"
-replace myTTRHBuilderWithoutAngle4MixedPairs.ComponentName = "TTRHBuilderWithoutAngle4MixedPairs"
-
 es_module mixedlayerpairs =  MixedLayerPairsESProducer {
 
   string ComponentName = "MixedLayerPairs"
